@@ -1,6 +1,9 @@
-@startuml cinema
+@startuml Ingresso
 
-class Pessoa{
+title Diagrama de Classes - Ingresso de Cinema
+
+
+class User{
     - email: String
     - senha: String
     - cpf: String
@@ -10,6 +13,7 @@ class Pessoa{
     - dataNascimento: Date
     + construtor(email, senha, cpf, telefone, endereco, dataNascimento)
 }
+
 class Filme{
     - titulo: String
     - sinopse: String
@@ -24,7 +28,7 @@ class Sessao{
     - horario: String
     - duracao: Time
     - tipo: Float
-    - numeroAssentos: Int
+    - quantidadeoAssentos: Int
     + construtor(sala, horario, duracao, precoIngresso, numeroAssentos)
 }
 
@@ -39,9 +43,14 @@ class Assento{
 class Ingresso{
     - serial: Int
     - total: Float
-    + construtor(numero, fila, tipo, valor)
+    + construtor(serial, total)
 }
 
+Ingresso <-- User
+Ingresso <-- Filme
+Ingresso <-- Sessao
+Ingresso <-- Assento
+
+
+
 @enduml
-
-
